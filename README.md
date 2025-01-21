@@ -2,6 +2,20 @@
 
 - create react propject using create reat app tool
 - install tailwind css
+- Header
+- Routing of app
+- Login form
+- Register form
+- Form Validation
+- useref hook
+- Firebase setup
+- Deploying ourapp to firebase (not completed due to error firebase cli login failed)
+- Create Signup user account
+- Implement Sign In User API
+- Created redux store with userSlice
+- Implemented Signout
+- Update profile API call
+- fetch from TMDB Movies
 
 # Fetures that we will develop
 
