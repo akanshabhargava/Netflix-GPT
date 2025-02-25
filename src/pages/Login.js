@@ -8,8 +8,9 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase.js";
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 import { addUser } from "../utils/userSlice.js";
+import { USER_AVATAR } from "../utils/constants.js";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
@@ -17,7 +18,7 @@ const Login = () => {
   const email = useRef(null);
   const password = useRef(null);
   const name = useRef(null);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const dispatchFn = useDispatch();
   const toggleSignInForm = () => {
     setIsSignInForm(!isSignInForm);
@@ -38,7 +39,7 @@ const Login = () => {
     if (message) return;
     //Sign In /Sign up logic comes here
     if (!isSignInForm) {
-      //Sign Up logic
+      //Sign Up(Register) logic
       // codefrom firebase documentatio create
 
       createUserWithEmailAndPassword(
@@ -51,7 +52,7 @@ const Login = () => {
           const user = userCredential.user;
           updateProfile(user, {
             displayName: name.current.value,
-            photoURL: "https://example.com/jane-q-user/profile.jpg",
+            photoURL: USER_AVATAR,
           })
             .then(() => {
               const { uid, email, displayName, photoURL } = auth.currentUser;
@@ -67,8 +68,8 @@ const Login = () => {
             .catch((error) => {
               setErrorMessage(error.message);
             });
-          console.log(user);
-          navigate("/browse");
+          //console.log(user);
+          //  navigate("/browse");
           // ...
         })
         .catch((error) => {
@@ -79,6 +80,7 @@ const Login = () => {
     } else {
       // Sign In logic
       // code from firebase documentation signin
+      //console.log("Authentication2", auth);
       signInWithEmailAndPassword(
         auth,
         email.current.value,
@@ -88,9 +90,9 @@ const Login = () => {
           // Signed in
           const user = userCredential.user;
 
-          navigate("/browse");
+          //  navigate("/browse");
 
-          console.log(user);
+          // console.log(user);
           // ...
         })
         .catch((error) => {
