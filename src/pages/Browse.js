@@ -3,6 +3,7 @@ import MainContainer from "../components/MainContainer";
 import SecondaryContainer from "../components/SecondaryContainer";
 
 import useNowPalyingMovies from "../hooks/useNowPlayingMovies";
+import usePopularMovies from "../hooks/usePopularMovies";
 
 const Browse = () => {
   // const dispatch = useDispatch();
@@ -20,7 +21,7 @@ const Browse = () => {
   //   getNowPlayingMovies();
   // }, []);
   useNowPalyingMovies();
-
+  usePopularMovies();
   return (
     <div className="">
       <Header />
