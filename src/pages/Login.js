@@ -24,6 +24,7 @@ const Login = () => {
     setIsSignInForm(!isSignInForm);
   };
   const handleButtonClick = () => {
+    console.log("auth", auth);
     let message = null;
     if (isSignInForm) {
       message = checkValidateData(email.current.value, password.current.value);
@@ -37,7 +38,7 @@ const Login = () => {
     }
     setErrorMessage(message);
     if (message) return;
-    //Sign In /Sign up logic comes here
+    //Sign In(login) /Sign up logic comes here
     if (!isSignInForm) {
       //Sign Up(Register) logic
       // codefrom firebase documentatio create
