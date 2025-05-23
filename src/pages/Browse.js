@@ -1,3 +1,5 @@
+import { useSelector } from "react-redux";
+import GPTSearch from "../components/GPTSearch";
 import Header from "../components/Header";
 import MainContainer from "../components/MainContainer";
 import SecondaryContainer from "../components/SecondaryContainer";
@@ -6,6 +8,7 @@ import useNowPalyingMovies from "../hooks/useNowPlayingMovies";
 import usePopularMovies from "../hooks/usePopularMovies";
 
 const Browse = () => {
+  const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
   // const dispatch = useDispatch();
   // const getNowPlayingMovies = async () => {
   //   const data = await fetch(
@@ -26,6 +29,15 @@ const Browse = () => {
     <div className="">
       <Header />
 
+      {showGptSearch ? (
+        <GPTSearch />
+      ) : (
+        <>
+          <MainContainer />
+          <SecondaryContainer />
+        </>
+      )}
+
       {/*
           MainContainer 
           - VideoBackground
@@ -37,8 +49,6 @@ const Browse = () => {
 
 
         */}
-      <MainContainer />
-      <SecondaryContainer />
     </div>
   );
 };

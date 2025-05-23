@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import Header from "../components/Header";
 import { checkValidateData } from "../utils/validate.js";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -10,7 +10,7 @@ import {
 import { auth } from "../utils/firebase.js";
 //import { useNavigate } from "react-router-dom";
 import { addUser } from "../utils/userSlice.js";
-import { USER_AVATAR } from "../utils/constants.js";
+import { BG_URL, USER_AVATAR } from "../utils/constants.js";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
@@ -24,7 +24,7 @@ const Login = () => {
     setIsSignInForm(!isSignInForm);
   };
   const handleButtonClick = () => {
-    console.log("auth", auth);
+    // console.log("auth", auth);
     let message = null;
     if (isSignInForm) {
       message = checkValidateData(email.current.value, password.current.value);
@@ -89,10 +89,8 @@ const Login = () => {
       )
         .then((userCredential) => {
           // Signed in
-          const user = userCredential.user;
-
+          //  const user = userCredential.user;
           //  navigate("/browse");
-
           // console.log(user);
           // ...
         })
@@ -108,10 +106,7 @@ const Login = () => {
       <Header />
       <div className="absolute">
         {" "}
-        <img
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/aa9edac4-a0e6-4f12-896e-32c518daec62/web/IN-en-20241223-TRIFECTA-perspective_1502c512-be5f-4f14-b21a-e3d75fe159ab_large.jpg"
-          alt="background-image"
-        />
+        <img src={BG_URL} alt="background-image" />
       </div>
 
       <form
